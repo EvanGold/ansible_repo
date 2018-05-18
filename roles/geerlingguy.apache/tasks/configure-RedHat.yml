@@ -16,7 +16,7 @@
     group: root
     mode: 0644
   notify:
-    - restart httpd
+    - restart apache
 
 - name: Check whether certificates defined in vhosts exist.
   stat: path={{ item.certificate_file }}

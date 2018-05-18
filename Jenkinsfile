@@ -11,3 +11,10 @@ pipeline {
         }
     }
 }
+
+ssh -i /var/jenkins_home/job.pem centos@172.17.0.1 'sudo sh -c "cd /var/tmp/ansible_repo; pwd; git pull" '
+
+ssh -i /var/jenkins_home/job.pem centos@172.17.0.1 'sudo rsync -av /var/tmp/ansible_repo/ /etc/ansible/'
+
+ssh -i /var/jenkins_home/job.pem centos@172.17.0.1 'sudo /etc/ansible/roles/geerlingguy.apache/bin/run_ansible'
+
