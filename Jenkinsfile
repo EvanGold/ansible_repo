@@ -4,6 +4,7 @@ checkout scm
 
 stage "Ansible PlayBook"
 { 
-    sh 'pwd; ls -l'
+    sh 'pwd; ls -al'
     sh('/etc/ansible/roles/geerlingguy.apache/bin/run_ansible')
 }
+
