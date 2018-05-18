@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. /etc/profile
+
+cd /var/ansible/ansible_repo/roles/splunkforwarder/
+
+ansible-playbook ./splunk_playbook.yml
