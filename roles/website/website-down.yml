@@ -1,0 +1,22 @@
+---
+- hosts: web
+  user: centos
+  become: true
+
+  tasks:
+    - name: install httpd
+      yum: name=httpd update_cache=yes state=latest
+
+    - name: website file
+      copy:
+        src: /etc/ansible/roles/website/files/index.html.down
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+        - restart httpd
+
+  handlers:
+    - name: restart httpd
+      service: name=httpd state=restarted

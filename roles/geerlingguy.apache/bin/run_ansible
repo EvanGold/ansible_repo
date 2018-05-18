@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. /etc/profile
+
+cd /etc/ansible/roles/geerlingguy.apache/
+
+ansible-playbook ./apache_playbook.yml
