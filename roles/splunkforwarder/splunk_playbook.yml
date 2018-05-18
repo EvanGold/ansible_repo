@@ -1,0 +1,10 @@
+- hosts: splunk
+  user: centos
+  become: true
+  gather_facts: true
+
+  roles:
+    - role: splunkforwarder
+
+  vars_files:
+    - vars/main.yml

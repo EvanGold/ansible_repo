@@ -1,0 +1,17 @@
+---
+- Index-server:
+  - splunkforwarder_server: '172.31.18.111:9997'
+- Default install-directory:
+  - splunkforwarder_dir: '/opt/splunkforwarder/'
+
+- splunkforwarder_log_items:
+  - app_name: custom
+    source: "/var/log/messages"
+    index: "syslog"
+    sourcetype: linux_messages_syslog
+
+- splunkforwarder_log_items_custom:
+  - app_name: custom
+    source: "/var/log/httpd.log"
+    index: "web"
+    sourcetype: prod
