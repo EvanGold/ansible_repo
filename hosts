@@ -43,6 +43,8 @@
 ## db-[99:101]-node.example.com
 
 
+###########################################3
+
 [linux]
 client[1:2]
 
@@ -58,3 +60,12 @@ winclient1
 
 [web]
 client1
+
+[web:vars]
+ansible_ssh_private_key_file=/root/aws_linux_key.pem
+
+[splunk]
+client1
+
+[splunk:vars]
+ansible_ssh_private_key_file=/root/aws_linux_key.pem
