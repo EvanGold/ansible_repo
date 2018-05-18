@@ -1,3 +1,307 @@
-<h1><span style="color: #000080;"><strong>Site Down VVV by Ansible.</strong></span></h1>
-<p><span style="color: #000080;"><strong><img src="https://htmleditor.tools/tinymce465/plugins/emoticons/img/smiley-sealed.gif" alt="sealed" /></strong></span></p>
 
+<HTML> 
+<HEAD> 
+<h1 align="center"> Tic Tac Toe vs. A.I. by Jacob Gold</h1>
+<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
+<TITLE>Tic Tac Toe Gold</TITLE> 
+
+<SCRIPT TYPE="TEXT/JAVASCRIPT"> 
+// Simple A.I Tic Tac Toe game in JavaScript and HTML.
+// Jacob Gold 
+// - credit to several sources for code samples/ideas.
+
+var xTurn = true; 
+var gameOver = false; 
+var numMoves = 0; 
+var computerTurn = false; // A.I. - true/false variable to keep track of the turn
+
+
+function makeComputerMove()
+{
+var mycol = (Math.floor(Math.random() * 3)-0);
+var myrow = (Math.floor(Math.random() * 3)-0);
+computerTurn = !computerTurn;
+myval = document.getElementById(myrow+ mycol).value; 
+if(myval == 'X' && val1 == 'O')
+{ 
+//status.innerHTML = "X WINS!"; 
+return true; 
+} 
+
+}
+
+function squareclicked(square) 
+
+{ 
+var value = square.value; 
+var status = document.getElementById('status'); 
+
+if(gameOver) 
+{ 
+alert("The game is already over."); 
+return; 
+} 
+
+if(value != 'X' && value != 'O') 
+{ 
+if(xTurn) 
+{ 
+numMoves++; 
+square.value = 'X'; 
+xTurn = false; 
+
+//// check for winner.
+var winner = checkWin(); 
+if(!winner) 
+{ 
+if(numMoves == 9) 
+status.innerHTML = 'Tie Game!'; 
+} 
+else 
+gameOver = true; 
+
+
+// A.I. Logic Code: /////////////////////////////
+if(numMoves < 9 && !winner) 
+{
+while (true) {
+// Generate random number column/rows for AI guess.
+var col = (Math.floor(Math.random() * 3)-0);
+var row = (Math.floor(Math.random() * 3)-0);
+
+// Assign guess square value to box variable.
+var box = document.getElementById(col + '_' + row).value; 
+
+// If guess square is blank, use it and exit.
+if(box != 'X' && box != 'O') {
+document.getElementById(col + '_' + row).value = 'O'; 
+numMoves++; 
+xTurn = true; 
+break;
+}
+}
+// END A.I. Logic Code: ////////////////////////
+}
+
+status.innerHTML = 'X\'s turn'; 
+} 
+else 
+{ 
+numMoves++; 
+square.value = 'O'; 
+xTurn = true; 
+status.innerHTML = 'X\'s turn'; 
+} 
+} 
+else 
+alert('That square has already been played.'); 
+
+var winner = checkWin(); 
+if(!winner) 
+{ 
+if(numMoves == 9) 
+status.innerHTML = 'Tie Game!'; 
+} 
+else 
+gameOver = true; 
+
+} 
+
+function newgame() 
+{ 
+var status = document.getElementById('status'); 
+
+xTurn = true; 
+status.innerHTML = 'X\'s turn - A.I is O'; 
+gameOver = false; 
+numMoves = 0; 
+
+for(var x = 0; x < 3; x++) 
+{ 
+for(var y = 0; y < 3; y++) 
+{ 
+document.getElementById(x + '_' + y).value = ' '; 
+} 
+} 
+} 
+
+function checkWin() 
+{ 
+var status = document.getElementById('status'); 
+var val0; 
+var val1; 
+var val2; 
+
+
+for(var y = 0; y < 3; y++) 
+{ 
+val0 = document.getElementById('0_'+y).value; 
+val1 = document.getElementById('1_'+y).value; 
+val2 = document.getElementById('2_'+y).value; 
+if(val0 == 'X' && val1 == 'X' && val2 == 'X') 
+{ 
+status.innerHTML = "X WINS!"; 
+return true; 
+} 
+else if(val0 == 'O' && val1 == 'O' && val2 == 'O') 
+{ 
+status.innerHTML = "A.I. WINS!"; 
+return true; 
+} 
+} 
+
+
+for(var x = 0; x < 3; x++) 
+{ 
+val0 = document.getElementById(x + '_0').value; 
+val1 = document.getElementById(x + '_1').value; 
+val2 = document.getElementById(x + '_2').value; 
+if(val0 == 'X' && val1 == 'X' && val2 == 'X') 
+{ 
+status.innerHTML = "X WINS!"; 
+return true; 
+} 
+else if(val0 == 'O' && val1 == 'O' && val2 == 'O') 
+{ 
+status.innerHTML = "A.I. WINS!"; 
+return true; 
+} 
+} 
+
+
+val0 = document.getElementById('0_0').value; 
+val1 = document.getElementById('1_1').value; 
+val2 = document.getElementById('2_2').value; 
+if(val0 == 'X' && val1 == 'X' && val2 == 'X') 
+{ 
+status.innerHTML = "X WINS!"; 
+return true; 
+} 
+else if(val0 == 'O' && val1 == 'O' && val2 == 'O') 
+{ 
+status.innerHTML = "A.I. WINS!"; 
+return true; 
+} 
+
+
+val0 = document.getElementById('2_0').value; 
+val1 = document.getElementById('1_1').value; 
+val2 = document.getElementById('0_2').value; 
+if(val0 == 'X' && val1 == 'X' && val2 == 'X') 
+{ 
+status.innerHTML = "X WINS!"; 
+return true; 
+} 
+else if(val0 == 'O' && val1 == 'O' && val2 == 'O') 
+{ 
+status.innerHTML = "A.I. WINS!"; 
+return true; 
+} 
+
+
+} 
+
+</SCRIPT> 
+
+<style>
+
+
+input[type=button] {
+    color:#08233e;
+background-color: #2669FF;
+    font-family: 'Crafty Girls', cursive;
+    font-size:70%;
+   width: 100;
+height:100;
+    cursor:pointer;
+font-size:25;
+border:groove;
+border-color: 000000;
+font-weight:900;
+}
+
+input[type=button]:hover {
+    background-color:#FFFFFF;
+}
+
+
+input[id="NEWGAME"] {
+    color:#08233e;
+background-color: #2669FF;
+   width: 310;
+height:60;
+    cursor:pointer;
+font-size:30;
+font-family: 'Shadows Into Light', cursive;
+
+}
+
+input[id=NEWGAME]:hover {
+    background-color:#FFFFFF;
+
+}
+
+#status{
+font-family: 'Shadows Into Light', cursive;
+//font-family: "Times New Roman", Times, serif;
+font-size:30;
+font-style:bold;
+font-weight:900;
+}
+
+#stat{
+background-color:#2669FF;
+width:302;
+height:50
+}
+
+#outline{
+width:400;
+height:530;
+background-color:000000;
+
+}
+
+
+#header{
+height:100;
+width:800;
+background-color:000000;
+}
+</style>
+</HEAD> 
+
+<BODY>
+
+<div align="center">
+<div id="outline">
+<br>
+<br>
+<INPUT TYPE="BUTTON" ID="NEWGAME" VALUE="New Game" ONCLICK="newgame();">
+<br>
+<br>
+<INPUT TYPE="BUTTON" ID="0_0" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="1_0" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="2_0" VALUE=" " ONCLICK="squareclicked(this);"> 
+<BR> 
+<INPUT TYPE="BUTTON" ID="0_1" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="1_1" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="2_1" VALUE=" " ONCLICK="squareclicked(this);"> 
+<BR> 
+<INPUT TYPE="BUTTON" ID="0_2" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="1_2" VALUE=" " ONCLICK="squareclicked(this);"> 
+<INPUT TYPE="BUTTON" ID="2_2" VALUE=" " ONCLICK="squareclicked(this);"> 
+<br>
+
+<div align="center">
+<div id="stat"> 
+<P ID="status">X's turn (A.I. is O).</P>
+</div>
+</div>
+</div> 
+ </div>
+
+
+</BODY> 
+</HTML>
