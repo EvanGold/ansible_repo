@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. /etc/profile
+
+cd /etc/ansible/roles/website/
+
+ansible-playbook ./website-up.yml
+
