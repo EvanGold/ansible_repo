@@ -2,6 +2,10 @@
 
 . /etc/profile
 
+<<<<<<< HEAD
 cd /etc/ansible/roles/splunkforwarder/
+=======
+cd /var/ansible/ansible_repo/roles/splunkforwarder/
+>>>>>>> 8be94b61b5b4c510e0a6912d62aab8f3046b10af
 
 ansible-playbook ./splunk_playbook.yml
