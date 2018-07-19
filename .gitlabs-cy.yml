@@ -4,3 +4,4 @@ deploy_app:
     - ansible
   script:
     - 'ansible-playbook -i staging deploy.yml'
+
